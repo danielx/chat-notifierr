@@ -104,3 +104,5 @@ def test_radarr(
 
     if result.notification_sent:
         libsMock.gchat.send_message.assert_called_once()
+    else:
+        libsMock.gchat.send_message.assert_not_called()
