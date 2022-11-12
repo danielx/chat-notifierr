@@ -46,6 +46,7 @@ else:
     processors = [
         structlog.contextvars.merge_contextvars,
         structlog.processors.EventRenamer("message"),
+        structlog.processors.TimeStamper(fmt="iso"),
         format_exception,
         add_log_severity,
         structlog.processors.JSONRenderer(),
