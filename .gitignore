@@ -1,0 +1,17 @@
+# editor
+.vscode
+
+# python
+__pycache__
+
+# python tools
+.mypy_cache
+.pytest_cache
+.coverage
+cov.xml
+
+# tracked using pipenv
+requirements.txt
+
+# general
+.development.env
