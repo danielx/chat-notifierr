@@ -41,7 +41,7 @@ if not settings.google_cloud_project:
         structlog.processors.TimeStamper(fmt="iso"),
         format_exception,
         structlog.dev.set_exc_info,
-        structlog.dev.ConsoleRenderer(),
+        structlog.dev.ConsoleRenderer(event_key="message"),
     ]
 
 else:
