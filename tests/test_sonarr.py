@@ -16,7 +16,7 @@ def libsMock(mocker):
     return mocker.patch(PATH.format("libs"))
 
 
-class TestPayload(NamedTuple):
+class Payload(NamedTuple):
     auth: tuple | None = (
         settings.basic_auth_username,
         settings.basic_auth_password,
@@ -31,7 +31,7 @@ class TestPayload(NamedTuple):
     }
 
 
-class TestResult(NamedTuple):
+class Result(NamedTuple):
     status_code: int
 
     notification_sent: bool
@@ -41,14 +41,14 @@ class TestResult(NamedTuple):
     "payload,result",
     [
         (
-            TestPayload(),
-            TestResult(
+            Payload(),
+            Result(
                 status_code=204,
                 notification_sent=False,
             ),
         ),
         (  # only notify on eventType=Download
-            TestPayload(
+            Payload(
                 json={
                     "eventType": "Download",
                     "series": {"title": "string", "tvdbId": 0},
@@ -58,34 +58,34 @@ class TestResult(NamedTuple):
                     ],
                 }
             ),
-            TestResult(
+            Result(
                 status_code=204,
                 notification_sent=True,
             ),
         ),
         (  # verify invalid auth
-            TestPayload(
+            Payload(
                 auth=(settings.basic_auth_username, "invalid-password"),
             ),
-            TestResult(
+            Result(
                 status_code=401,
                 notification_sent=False,
             ),
         ),
         (  # verify missing auth
-            TestPayload(
+            Payload(
                 auth=None,
             ),
-            TestResult(
+            Result(
                 status_code=401,
                 notification_sent=False,
             ),
         ),
         (  # verify body
-            TestPayload(
+            Payload(
                 json=None,
             ),
-            TestResult(
+            Result(
                 status_code=422,
                 notification_sent=False,
             ),
@@ -93,8 +93,8 @@ class TestResult(NamedTuple):
     ],
 )
 def test_sonarr(
-    payload: TestPayload,
-    result: TestResult,
+    payload: Payload,
+    result: Result,
     mocker,
     libsMock,
 ):
