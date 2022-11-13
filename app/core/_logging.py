@@ -34,10 +34,12 @@ def add_log_severity(
     return event_dict
 
 
-if settings.devserver:
+if not settings.google_cloud_project:
     processors: list = [
         structlog.processors.add_log_level,
+        structlog.processors.EventRenamer("message"),
         structlog.processors.TimeStamper(fmt="iso"),
+        format_exception,
         structlog.dev.set_exc_info,
         structlog.dev.ConsoleRenderer(),
     ]
