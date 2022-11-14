@@ -16,7 +16,6 @@ isort = "*"
 flake8 = "*"
 mypy = "*"
 pytest = "*"
-requests = "*"
 pytest-mock = "*"
 pytest-cov = "*"
 
