@@ -17,7 +17,7 @@ def libsMock(mocker):
 
 
 class Payload(NamedTuple):
-    auth: tuple | None = (
+    auth: tuple[bytes, bytes] | None = (
         settings.basic_auth_username,
         settings.basic_auth_password,
     )
@@ -59,7 +59,7 @@ class Result(NamedTuple):
         ),
         (  # verify invalid auth
             Payload(
-                auth=(settings.basic_auth_username, "invalid-password"),
+                auth=(settings.basic_auth_username, b"invalid-password"),
             ),
             Result(
                 status_code=401,
@@ -94,11 +94,17 @@ def test_radarr(
 ):
     libsMock.gchat.send_message = mocker.AsyncMock()
 
-    response = client.post(
-        url="/api/v1/radarr",
-        auth=payload.auth,
-        json=payload.json,
-    )
+    if payload.auth is None:
+        response = client.post(
+            url="/api/v1/radarr",
+            json=payload.json,
+        )
+    else:
+        response = client.post(
+            url="/api/v1/radarr",
+            auth=payload.auth,
+            json=payload.json,
+        )
 
     assert response.status_code == result.status_code
 
