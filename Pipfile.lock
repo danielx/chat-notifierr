@@ -240,11 +240,11 @@
         },
         "setuptools": {
             "hashes": [
-                "sha256:d0b9a8433464d5800cbe05094acf5c6d52a91bfac9b52bcfc4d41382be5d5d31",
-                "sha256:e197a19aa8ec9722928f2206f8de752def0e4c9fc6953527360d1c36d94ddb2f"
+                "sha256:6211d2f5eddad8757bd0484923ca7c0a6302ebc4ab32ea5e94357176e0ca0840",
+                "sha256:d1eebf881c6114e51df1664bc2c9133d022f78d12d5f4f665b9191f084e2862d"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==65.5.1"
+            "version": "==65.6.0"
         },
         "sniffio": {
             "hashes": [
@@ -264,11 +264,11 @@
         },
         "structlog": {
             "hashes": [
-                "sha256:760d37b8839bd4fe1747bed7b80f7f4de160078405f4b6a1db9270ccbfce6c30",
-                "sha256:94b29b1d62b2659db154f67a9379ec1770183933d6115d21f21aa25cfc9a7393"
+                "sha256:4edfe1d9f15f8a4bf365a817f7182af5d610596c155434b7564bfe7d40c2753c",
+                "sha256:bb1aa189214c30372a8afaa592f9556756aeb690e1ad7eb34391d7b5fa0f09b2"
             ],
             "index": "pypi",
-            "version": "==22.1.0"
+            "version": "==22.2.0"
         },
         "typing-extensions": {
             "hashes": [
