@@ -20,7 +20,7 @@ https://www.themoviedb.org/movie/$id"""
 )
 async def radarr(event: schemas.RadarrEvent):
     """Incoming webhook for radarr events."""
-    logging.info(event)
+    logging.info(repr(event))
 
     if event.eventType != "Download":
         return Response(status_code=status.HTTP_204_NO_CONTENT)

@@ -10,10 +10,11 @@ from ._settings import settings
 def format_exception(
     _, method_name: str, event_dict: structlog.types.EventDict
 ) -> structlog.types.EventDict:
-    if isinstance(event_dict["message"], Exception):
+    if "exc_info" in event_dict:
         event_dict["message"] = "".join(
-            traceback.format_exception(event_dict["message"], chain=False)
+            traceback.format_exception(event_dict["exc_info"], chain=False)
         )
+
     return event_dict
 
 
@@ -39,8 +40,7 @@ if not settings.google_cloud_project:
         structlog.processors.add_log_level,
         structlog.processors.EventRenamer("message"),
         structlog.processors.TimeStamper(fmt="iso"),
-        format_exception,
-        structlog.dev.set_exc_info,
+        structlog.processors.format_exc_info,
         structlog.dev.ConsoleRenderer(event_key="message"),
     ]
 
@@ -59,23 +59,23 @@ structlog.configure(processors=processors)
 
 class Logger:
     @staticmethod
-    def debug(msg: object) -> None:
+    def debug(msg: str) -> None:
         ...
 
     @staticmethod
-    def info(msg: object) -> None:
+    def info(msg: str) -> None:
         ...
 
     @staticmethod
-    def warning(msg: object) -> None:
+    def warning(msg: str) -> None:
         ...
 
     @staticmethod
-    def error(msg: object) -> None:
+    def error(msg: str) -> None:
         ...
 
     @staticmethod
-    def exception(msg: object) -> None:
+    def exception(msg: str, exc_info: Exception) -> None:
         ...
 
 
@@ -99,7 +99,7 @@ async def logger_middleware(request: Request, call_next) -> Response:
         return await call_next(request)
 
     except Exception as e:
-        logging.exception(e)
+        logging.exception(str(e), exc_info=e)
         return Response(
             content=b"internal server error",
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
