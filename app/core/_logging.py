@@ -10,10 +10,11 @@ from ._settings import settings
 def format_exception(
     _, method_name: str, event_dict: structlog.types.EventDict
 ) -> structlog.types.EventDict:
-    if isinstance(event_dict["message"], Exception):
+    if "exc_info" in event_dict:
         event_dict["message"] = "".join(
-            traceback.format_exception(event_dict["message"], chain=False)
+            traceback.format_exception(event_dict["exc_info"], chain=False)
         )
+
     return event_dict
 
 
@@ -39,8 +40,7 @@ if not settings.google_cloud_project:
         structlog.processors.add_log_level,
         structlog.processors.EventRenamer("message"),
         structlog.processors.TimeStamper(fmt="iso"),
-        format_exception,
-        structlog.dev.set_exc_info,
+        structlog.processors.format_exc_info,
         structlog.dev.ConsoleRenderer(event_key="message"),
     ]
 
