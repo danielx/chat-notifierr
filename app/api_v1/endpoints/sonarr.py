@@ -23,7 +23,7 @@ MESSAGE_ITEM = string.Template("- $title (S${season}E${episode})")
 )
 async def sonarr_webhook(event: schemas.SonarrEvent):
     """Incoming webhook for sonarr events."""
-    logging.info(event)
+    logging.info(repr(event))
 
     if event.eventType != "Download":
         return Response(status_code=status.HTTP_204_NO_CONTENT)

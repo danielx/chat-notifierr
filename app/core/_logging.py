@@ -59,23 +59,23 @@ structlog.configure(processors=processors)
 
 class Logger:
     @staticmethod
-    def debug(msg: object) -> None:
+    def debug(msg: str) -> None:
         ...
 
     @staticmethod
-    def info(msg: object) -> None:
+    def info(msg: str) -> None:
         ...
 
     @staticmethod
-    def warning(msg: object) -> None:
+    def warning(msg: str) -> None:
         ...
 
     @staticmethod
-    def error(msg: object) -> None:
+    def error(msg: str) -> None:
         ...
 
     @staticmethod
-    def exception(msg: object) -> None:
+    def exception(msg: str, exc_info: Exception) -> None:
         ...
 
 
@@ -99,7 +99,7 @@ async def logger_middleware(request: Request, call_next) -> Response:
         return await call_next(request)
 
     except Exception as e:
-        logging.exception(e)
+        logging.exception(str(e), exc_info=e)
         return Response(
             content=b"internal server error",
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

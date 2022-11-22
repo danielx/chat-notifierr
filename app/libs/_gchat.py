@@ -24,8 +24,8 @@ class GoogleChatAPIWrapper:
         logging.info(f"HTTP {r.status_code} - POST {r.request.url.path}")
 
         if not r.is_success:
-            logging.info(r.headers)
-            logging.info(r.content)
+            logging.info(repr(r.headers))
+            logging.info(r.content.decode("utf-8"))
             r.raise_for_status()
 
 
