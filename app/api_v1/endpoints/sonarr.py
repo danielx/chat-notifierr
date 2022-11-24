@@ -14,7 +14,7 @@ $items
 https://www.thetvdb.com/dereferrer/series/$id"""
 )
 
-MESSAGE_ITEM = string.Template("- $title (S${season}E${episode})")
+MESSAGE_ITEM = string.Template("- S${season}E${episode}")
 
 
 @router.post(
@@ -32,7 +32,6 @@ async def sonarr_webhook(event: schemas.SonarrEvent):
     for episode in event.episodes:
         items.append(
             MESSAGE_ITEM.substitute(
-                title=episode.title,
                 season=str(episode.seasonNumber).zfill(2),
                 episode=str(episode.episodeNumber).zfill(2),
             )
