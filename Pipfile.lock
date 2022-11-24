@@ -264,11 +264,11 @@
         },
         "structlog": {
             "hashes": [
-                "sha256:4edfe1d9f15f8a4bf365a817f7182af5d610596c155434b7564bfe7d40c2753c",
-                "sha256:bb1aa189214c30372a8afaa592f9556756aeb690e1ad7eb34391d7b5fa0f09b2"
+                "sha256:b403f344f902b220648fa9f286a23c0cc5439a5844d271fec40562dbadbc70ad",
+                "sha256:e7509391f215e4afb88b1b80fa3ea074be57a5a17d794bd436a5c949da023333"
             ],
             "index": "pypi",
-            "version": "==22.2.0"
+            "version": "==22.3.0"
         },
         "typing-extensions": {
             "hashes": [
