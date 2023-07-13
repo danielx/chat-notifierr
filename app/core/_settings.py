@@ -1,8 +1,8 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    google_cloud_project: str | None
+    google_cloud_project: str | None = None
 
     chat_webhook_url: str
 
