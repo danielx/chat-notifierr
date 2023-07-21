@@ -253,11 +253,11 @@
         },
         "pydantic-settings": {
             "hashes": [
-                "sha256:579bbcbec3501e62bab73867b097ae10218201950e897463c98a182ffe7ed104",
-                "sha256:f440ec7cfb6dc63f03226c47b0e7803750d1b66a49ed944ac23eb4f0c84f8722"
+                "sha256:342337fff50b23585e807a86dec85037900972364435c55c2fc00d16ff080539",
+                "sha256:6183a2abeab465d5a3ab69758e9a22d38b0cc2ba193f0b85f6971a252ea630f6"
             ],
             "index": "pypi",
-            "version": "==2.0.1"
+            "version": "==2.0.2"
         },
         "python-dotenv": {
             "hashes": [
