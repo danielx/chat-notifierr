@@ -1,5 +1,6 @@
 """ Main entrypoint
 """
+
 from app import api_v1
 from app.core import app
 
