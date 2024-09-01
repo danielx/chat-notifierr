@@ -652,11 +652,12 @@
                 "standard"
             ],
             "hashes": [
-                "sha256:00db9a9e3711a5fa59866e2b02fac69d8dc70ce0814aaec9a66d1d9e5c832a30",
-                "sha256:06b00e3087e58c6865c284143c0c42f810b32ff4f265ab19d08c566f74a08728"
+                "sha256:4b15decdda1e72be08209e860a1e10e92439ad5b97cf44cc945fcbee66fc5788",
+                "sha256:65fd46fe3fda5bdc1b03b94eb634923ff18cd35b2f084813ea79d1f103f711b5"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==0.30.4"
+            "version": "==0.30.6"
         },
         "uvloop": {
             "hashes": [
