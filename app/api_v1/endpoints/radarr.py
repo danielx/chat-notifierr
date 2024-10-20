@@ -9,7 +9,7 @@ from app.core import logging
 router = APIRouter()
 
 MESSAGE = string.Template(
-    """Now available: *$title* ($year)
+    """$event: *$title* ($year)
 https://www.themoviedb.org/movie/$id"""
 )
 
@@ -22,11 +22,12 @@ async def radarr(event: schemas.RadarrEvent):
     """Incoming webhook for radarr events."""
     logging.info(repr(event))
 
-    if event.eventType != "Download":
+    if event.eventType not in ["Download", "MovieAdded"]:
         return Response(status_code=status.HTTP_204_NO_CONTENT)
 
     await libs.gchat.send_message(
         MESSAGE.substitute(
+            event="Now available" if event.eventType == "Download" else "Added",
             title=event.movie.title.strip(),
             year=event.movie.year,
             id=event.movie.tmdbId,

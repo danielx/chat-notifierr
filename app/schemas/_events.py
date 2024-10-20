@@ -28,4 +28,4 @@ class SonarrEvent(BaseModel):
     eventType: str
 
     series: Series
-    episodes: list[Episode]
+    episodes: list[Episode] = []

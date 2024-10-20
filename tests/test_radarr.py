@@ -43,10 +43,22 @@ class Result(NamedTuple):
                 notification_sent=False,
             ),
         ),
-        (  # only notify on eventType=Download
+        (  # notify on eventType=Download
             Payload(
                 json={
                     "eventType": "Download",
+                    "movie": {"title": "string", "year": 0, "tmdbId": 0},
+                }
+            ),
+            Result(
+                status_code=204,
+                notification_sent=True,
+            ),
+        ),
+        (  # notify on eventType=MovieAdded
+            Payload(
+                json={
+                    "eventType": "MovieAdded",
                     "movie": {"title": "string", "year": 0, "tmdbId": 0},
                 }
             ),

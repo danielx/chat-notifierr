@@ -47,7 +47,7 @@ class Result(NamedTuple):
                 notification_sent=False,
             ),
         ),
-        (  # only notify on eventType=Download
+        (  # notify on eventType=Download
             Payload(
                 json={
                     "eventType": "Download",
@@ -56,6 +56,18 @@ class Result(NamedTuple):
                         {"title": "string", "episodeNumber": 0, "seasonNumber": 0},
                         {"title": "string", "episodeNumber": 1, "seasonNumber": 0},
                     ],
+                }
+            ),
+            Result(
+                status_code=204,
+                notification_sent=True,
+            ),
+        ),
+        (  # notify on eventType=SeriesAdd
+            Payload(
+                json={
+                    "eventType": "SeriesAdd",
+                    "series": {"title": "string", "tvdbId": 0},
                 }
             ),
             Result(
