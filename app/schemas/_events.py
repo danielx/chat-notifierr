@@ -4,9 +4,6 @@ from pydantic import BaseModel
 class Movie(BaseModel):
     title: str
     year: int
-
-
-class RemoteMovie(BaseModel):
     tmdbId: int
 
 
@@ -14,7 +11,6 @@ class RadarrEvent(BaseModel):
     eventType: str
 
     movie: Movie
-    remoteMovie: RemoteMovie
 
 
 class Series(BaseModel):

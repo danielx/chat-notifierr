@@ -29,7 +29,7 @@ async def radarr(event: schemas.RadarrEvent):
         MESSAGE.substitute(
             title=event.movie.title.strip(),
             year=event.movie.year,
-            id=event.remoteMovie.tmdbId,
+            id=event.movie.tmdbId,
         )
     )
 

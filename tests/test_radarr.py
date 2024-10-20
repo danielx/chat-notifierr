@@ -23,8 +23,7 @@ class Payload(NamedTuple):
     )
     json: dict | None = {
         "eventType": "Grab",
-        "movie": {"title": "string", "year": 0},
-        "remoteMovie": {"tmdbId": 0},
+        "movie": {"title": "string", "year": 0, "tmdbId": 0},
     }
 
 
@@ -48,8 +47,7 @@ class Result(NamedTuple):
             Payload(
                 json={
                     "eventType": "Download",
-                    "movie": {"title": "string", "year": 0},
-                    "remoteMovie": {"tmdbId": 0},
+                    "movie": {"title": "string", "year": 0, "tmdbId": 0},
                 }
             ),
             Result(
