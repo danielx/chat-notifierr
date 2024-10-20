@@ -25,7 +25,7 @@ requirements:
 	pipenv requirements > requirements.txt
 
 .PHONY: build
-build:
+build: requirements
 	docker build --pull --rm -f Dockerfile -t chat-notifierr:latest .
 
 .PHONY: run
