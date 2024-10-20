@@ -9,7 +9,7 @@ from app.core import logging
 router = APIRouter()
 
 MESSAGE = string.Template(
-    """Now available: *$title*
+    """$event: *$title*
 $items
 https://www.thetvdb.com/dereferrer/series/$id"""
 )
@@ -25,7 +25,7 @@ async def sonarr_webhook(event: schemas.SonarrEvent):
     """Incoming webhook for sonarr events."""
     logging.info(repr(event))
 
-    if event.eventType != "Download":
+    if event.eventType not in ["Download", "SeriesAdd"]:
         return Response(status_code=status.HTTP_204_NO_CONTENT)
 
     items = []
@@ -39,6 +39,7 @@ async def sonarr_webhook(event: schemas.SonarrEvent):
 
     await libs.gchat.send_message(
         MESSAGE.substitute(
+            event="Now available" if event.eventType == "Download" else "Added",
             title=event.series.title.strip(),
             items="\n".join(items),
             id=event.series.tvdbId,
