@@ -10,6 +10,7 @@ Sends notifications to Google Chat based on incoming webhooks from Sonarr & Rada
 - [x] On Import
 - [ ] On Upgrade
 - [ ] On Rename
+- [X] On Series Added
 - [ ] On Series Delete
 - [ ] On Episode File Delete
 - [ ] On Episode File Delete For Upgrade
@@ -23,7 +24,7 @@ Sends notifications to Google Chat based on incoming webhooks from Sonarr & Rada
 - [x] On Import
 - [ ] On Upgrade
 - [ ] On Rename
-- [ ] On Movie Added
+- [X] On Movie Added
 - [ ] On Movie Delete
 - [ ] On Movie File Delete
 - [ ] On Movie File Delete For Upgrade
