@@ -8,11 +8,9 @@ from app.core import logging
 
 router = APIRouter()
 
-MESSAGE = string.Template(
-    """$event: *$title*
+MESSAGE = string.Template("""$event: *$title*
 $items
-https://www.thetvdb.com/dereferrer/series/$id"""
-)
+https://www.thetvdb.com/dereferrer/series/$id""")
 
 MESSAGE_ITEM = string.Template("- S${season}E${episode}")
 

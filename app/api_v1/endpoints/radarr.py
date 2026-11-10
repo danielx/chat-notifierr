@@ -8,10 +8,8 @@ from app.core import logging
 
 router = APIRouter()
 
-MESSAGE = string.Template(
-    """$event: *$title* ($year)
-https://www.themoviedb.org/movie/$id"""
-)
+MESSAGE = string.Template("""$event: *$title* ($year)
+https://www.themoviedb.org/movie/$id""")
 
 
 @router.post(
